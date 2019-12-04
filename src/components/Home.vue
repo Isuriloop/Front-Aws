@@ -301,8 +301,18 @@ export default {
             (this.adad = null),
             (this.sexo = null),
             (this.carrera = null),
-            (this.dialog = false),
-            (window.location.href = "awseducateddns.hopto.org/Home/");
+            (this.dialog = false)
+            //(window.location.href = "awseducateddns.hopto.org/Home/");
+                const header = {
+      headers: {
+        Authorization: "Token " + this.token
+      }
+    };
+    API.get("v1/alumno/alumno_lista/", header).then(response => {
+      this.datas = response.data;
+      // eslint-disable-next-line no-console
+      console.log(this.datas);
+    });
         })
         .catch(error => {});
     },
@@ -317,7 +327,18 @@ export default {
       API.delete("v1/alumno/alumno_detail/" + datos.id + "/", header)
         .then(response => {
           alert("Borrado con exito", response);
-          window.location.href = "awseducateddns.hopto.org/Home/";
+         // window.location.href = "awseducateddns.hopto.org/Home/";
+             const header = {
+      headers: {
+        Authorization: "Token " + this.token
+      }
+    };
+    API.get("v1/alumno/alumno_lista/", header).then(response => {
+      this.datas = response.data;
+      // eslint-disable-next-line no-console
+      console.log(this.datas);
+    });
+         
         })
         .catch(error => {
           alert("Error", error);
@@ -367,8 +388,19 @@ export default {
       )
         .then(response => {
           alert("Se actualizo correctamente", response);
-          (this.dialog2 = false),
-            (window.location.href = "awseducateddns.hopto.org/Home/");
+          (this.dialog2 = false)
+            
+            //(window.location.href = "awseducateddns.hopto.org/Home/");
+                const header = {
+      headers: {
+        Authorization: "Token " + this.token
+      }
+    };
+    API.get("v1/alumno/alumno_lista/", header).then(response => {
+      this.datas = response.data;
+      // eslint-disable-next-line no-console
+      console.log(this.datas);
+    });
         })
         .catch(error => {
           alert("error", error);
@@ -457,7 +489,6 @@ export default {
     };
     API.get("v1/alumno/alumno_lista/", header).then(response => {
       this.datas = response.data;
-
       // eslint-disable-next-line no-console
       console.log(this.datas);
     });
